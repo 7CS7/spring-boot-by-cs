@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <!-- Required meta tags -->
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ 
+<meta charset="ISO-8859-1">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add employee</title>
+</head>
+<body>
+<div class="container">
+<form action="#" th:action="@{/employee/save}" th:object="${employee}" method="POST" class="form-inline">
+<input type="hidden" th:field="*{id}" />
+<input type="text" th:field="*{firstName}" placeholder="FirstName" class="form-control ml-2 mr-3 mb-4 col-4" /><br>
+Last Name  :<input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control ml-2 mr-3 mb-4 col-4" /><br>
+Email      :<input type="text" th:field="*{email}" placeholder="email" class="form-control mr-2 ml-3 mb-4 col-4" /><br>
+<button type="submit" class="btn btn-success btn-sm">save</button>
+</form>
+<a th:href="@{/employee/list}">Back to employee list</a>
+</div>
+</body>
+</html>

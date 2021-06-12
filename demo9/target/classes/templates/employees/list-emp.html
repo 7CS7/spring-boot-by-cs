@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <!-- Required meta tags -->
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ 
+<meta charset="ISO-8859-1">
+<head>
+<meta charset="ISO-8859-1">
+<title>List</title>
+</head>
+<body>
+<div class="container">
+<h3>Employee Directory</h3>
+<hr>
+<a th:href="@{/employee/showFormForAdd}" class="btn btn-primary">add Employee</a>
+<form action="#" th:action="@{/employee/search}" class="form-inline" method="GET">
+<input type="search" name="firstName" placeholder="First Name" class="form-control ml-2 mr-3 mb-4" />
+<input type="search" name="lastName" placeholder="lastName" class="form-control ml-2 mr-3 mb-4" />
+<button type="submit" class="btn btn-success">search</button>
+
+</form>
+<table class="table table-bordered table-striped" >
+<thead class="thead-dark">
+<tr>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Email</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="tempEmp:${listemployees}">
+<td th:text="${tempEmp.firstName}" />
+<td th:text="${tempEmp.lastName}" />
+<td th:text="${tempEmp.email}" />
+<td>
+<a th:href="@{/employee/showFormForUpdate(employeeId=${tempEmp.id})}" class="btn btn-info btn-sm">update</a>
+<a th:href="@{/employee/delete(employeeId=${tempEmp.id})}" class="btn btn-danger btn-sm"
+onclick="if(!(confirm('Are you sure you want to delete the employee')))return false">delete</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
